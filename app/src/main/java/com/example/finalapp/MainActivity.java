@@ -184,7 +184,7 @@ public class MainActivity extends AppCompatActivity {
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
                     if (snapshot.exists()) {
                         String username = snapshot.getValue(String.class);
-                        Main_tv_name.setText("Username:" + username);
+                        Main_tv_name.setText("Hello \n" + username);
                     }
                 }
 

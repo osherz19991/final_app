@@ -5,7 +5,7 @@
     android:layout_height="100dp"
     android:orientation="horizontal"
     android:padding="16dp"
-    android:layout_marginStart="20dp"
+    android:layout_marginStart="5dp"
     android:background="@drawable/layout_border">
 
     <LinearLayout
@@ -19,7 +19,7 @@
             android:id="@+id/tvTransactionName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="18sp"
+            android:textSize="14sp"
             android:textStyle="bold"
             android:textColor="@color/black"
             android:layout_weight="1"/>
@@ -29,7 +29,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textStyle="bold"
-            android:textSize="18sp"
+            android:textSize="14sp"
             android:textColor="@color/black"
             android:layout_weight="1"/>
 
@@ -47,7 +47,7 @@
             android:id="@+id/tvTransactionDate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="18sp"
+            android:textSize="14sp"
             android:textColor="@color/black"
             android:layout_weight="1"
             android:textStyle="bold" />
@@ -57,7 +57,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:textSize="18sp"
+            android:textSize="14sp"
             android:textColor="@color/black"
             android:textStyle="bold" />
 
@@ -70,7 +70,7 @@
         android:layout_width="100dp"
         android:layout_height="50dp"
         android:text="Delete"
-        android:layout_marginLeft="20dp"
+        android:layout_marginLeft="15dp"
         android:textColor="@android:color/white"
         android:background="@drawable/layout_border" />
 

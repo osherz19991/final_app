@@ -33,24 +33,6 @@ public class Login_Activity extends AppCompatActivity {
     private TextView registerNow;
     private ProgressBar progressBar;
     private FirebaseAuth mAuth;
-    private DatabaseReference userRef;
-
-
-
-    @Override
-    public void onStart() {
-        super.onStart();
-        FirebaseUser currentUser = mAuth.getCurrentUser();
-        if(currentUser != null){
-            String userId = currentUser.getUid();
-            userRef = FirebaseDatabase.getInstance().getReference().child("users").child(userId);
-            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-            startActivity(intent);
-            finish();
-        }
-    }
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
