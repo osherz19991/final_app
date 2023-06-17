@@ -7,7 +7,7 @@
 
     <item
         android:id="@+id/menu_list"
-        android:title="Incomes"
+        android:title="Transaction"
         android:icon="@drawable/ic_list" />
 
     <item

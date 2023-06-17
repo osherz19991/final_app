@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="wrap_content"
+    android:layout_width="match_parent"
     android:layout_height="100dp"
-    android:orientation="horizontal"
     android:padding="16dp"
     android:layout_marginStart="5dp"
     android:background="@drawable/layout_border">
+
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -63,15 +63,22 @@
 
     </LinearLayout>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="end"
+        android:paddingEnd="15dp">
 
+        <Button
+            android:id="@+id/btnDelete"
+            android:layout_width="100dp"
+            android:layout_height="50dp"
+            android:text="Delete"
+            android:textColor="@android:color/white"
+            android:background="@drawable/layout_border"
+            android:layout_gravity="end" />
 
-    <Button
-        android:id="@+id/btnDelete"
-        android:layout_width="100dp"
-        android:layout_height="50dp"
-        android:text="Delete"
-        android:layout_marginLeft="15dp"
-        android:textColor="@android:color/white"
-        android:background="@drawable/layout_border" />
+    </LinearLayout>
+
 
 </LinearLayout>
