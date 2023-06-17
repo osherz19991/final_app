@@ -14,6 +14,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 
@@ -38,9 +39,10 @@ public class Add_expense_income_Activity extends AppCompatActivity {
 
     private TextView Add_tve_expanse,Add_tve_income;
     private Spinner Add_sp_Category;
-    private Button Add_btn_Submit;
+    private Button Add_btn_Submit,btnDone;
     private List<String> categoriesList;
-    private EditText Add_et_TransactionName,Add_et_Amount,Add_et_Date,Add_et_Note;
+    private LinearLayout salaryLayout;
+    private EditText Add_et_TransactionName,Add_et_Amount,Add_et_Date,Add_et_Note,etNumberOfHours,etMoneyPerHour;
     private SimpleDateFormat dateFormat;
     private Calendar calendar;
     private String currentDate;
@@ -49,7 +51,6 @@ public class Add_expense_income_Activity extends AppCompatActivity {
     private BottomNavigationView bottomNavigationView;
     private boolean showIncomeList = false;
     private FirebaseDatabase database;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -93,6 +94,12 @@ public class Add_expense_income_Activity extends AppCompatActivity {
     private void initViews() {
         AddCategory();
         chooseIncomeExpanse();
+        btnDone.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                calculateSalary();
+            }
+        });
         submit();
         fetchCategoriesFromDatabase();
         calendar = Calendar.getInstance();
@@ -114,6 +121,7 @@ public class Add_expense_income_Activity extends AppCompatActivity {
                 Add_tve_expanse.setBackgroundColor(0xFF03DAC5);
                 Add_tve_income.setBackgroundColor(Color.WHITE);
                 showIncomeList = false;
+                salaryLayout.setVisibility(View.GONE);
                 fetchCategoriesFromDatabase();
             }
         });
@@ -124,11 +132,11 @@ public class Add_expense_income_Activity extends AppCompatActivity {
                 Add_tve_expanse.setBackgroundColor(Color.WHITE);
                 Add_tve_income.setBackgroundColor(0xFF03DAC5);
                 showIncomeList = true;
+                salaryLayout.setVisibility(View.VISIBLE);
                 fetchCategoriesFromDatabase();
             }
         });
     }
-
     private void populateCategories(List<Category> Categories) {
         List<Category> categories = Categories;
 
@@ -142,7 +150,6 @@ public class Add_expense_income_Activity extends AppCompatActivity {
         categoryAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         Add_sp_Category.setAdapter(categoryAdapter);
     }
-
     private void AddCategory() {
         categoriesList = new ArrayList<>();
         ArrayAdapter<String> categoryAdapter = new ArrayAdapter<>(this,
@@ -161,10 +168,7 @@ public class Add_expense_income_Activity extends AppCompatActivity {
                 String note = Add_et_Note.getText().toString();
                 Transaction.Type type = showIncomeList ? Transaction.Type.INCOME : Transaction.Type.EXPENSE;
 
-
                 Transaction transaction = new Transaction(transactionName, amount, date, category, note, Color.WHITE, type);
-
-                // Save the transaction to the database under the user's ID
                 saveTransactionToDatabase(transaction);
 
                 Intent intent = new Intent(Add_expense_income_Activity.this, Income_Expanse_Activity.class);
@@ -173,24 +177,23 @@ public class Add_expense_income_Activity extends AppCompatActivity {
             }
         });
     }
-
     private void saveTransactionToDatabase(Transaction transaction) {
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         String userId = user.getUid();
         DatabaseReference databaseReference;
-        if(transaction.getType() == Transaction.Type.EXPENSE)
-             databaseReference = database.getInstance().getReference().child("transactions").child(userId).child("expenses");
-        else{
-             databaseReference = database.getInstance().getReference().child("transactions").child(userId).child("incomes");
+        if (transaction.getType() == Transaction.Type.EXPENSE)
+            databaseReference = database.getInstance().getReference().child("transactions").child(userId).child("expenses");
+        else {
+            databaseReference = database.getInstance().getReference().child("transactions").child(userId).child("incomes");
         }
+
         String transactionId = databaseReference.push().getKey();
+
+        // Set the transaction ID to the existing ID from the database
+        transaction.setId(transactionId);
+
         databaseReference.child(transactionId).setValue(transaction);
-
     }
-
-
-
-
     private void findViews() {
         Add_tve_expanse = findViewById(R.id.Add_tve_expanse);
         Add_tve_income  = findViewById(R.id.Add_tve_income);
@@ -201,6 +204,11 @@ public class Add_expense_income_Activity extends AppCompatActivity {
         Add_sp_Category = findViewById(R.id.Add_sp_Category);
         Add_btn_Submit = findViewById(R.id.Add_btn_Submit);
         bottomNavigationView = findViewById(R.id.bottom_navigation);
+        salaryLayout = findViewById(R.id.salaryLayout);
+        etNumberOfHours = findViewById(R.id.Add_et_NumberOfHours);
+        etMoneyPerHour = findViewById(R.id.Add_et_MoneyPerHour);
+        btnDone = findViewById(R.id.Add_btn_Done);
+
     }
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
@@ -208,7 +216,6 @@ public class Add_expense_income_Activity extends AppCompatActivity {
         BottomNavigationManager.navigate(this, menuItemId);
         return super.onOptionsItemSelected(item);
     }
-
     private void fetchCategoriesFromDatabase() {
 
         if(showIncomeList) {
@@ -249,11 +256,25 @@ public class Add_expense_income_Activity extends AppCompatActivity {
         });
     }
     }
+    private void calculateSalary() {
+        String numberOfHoursText = etNumberOfHours.getText().toString();
+        String moneyPerHourText = etMoneyPerHour.getText().toString();
 
+        if (!numberOfHoursText.isEmpty() && !moneyPerHourText.isEmpty()) {
+            int numberOfHours = Integer.parseInt(numberOfHoursText);
+            float moneyPerHour = Float.parseFloat(moneyPerHourText);
+
+            float salary = numberOfHours * moneyPerHour;
+            Add_et_Amount.setText(salary + "");
+        }
+
+    }
     protected void onResume() {
         super.onResume();
         fetchCategoriesFromDatabase();
     }
+
+
 
 
 }

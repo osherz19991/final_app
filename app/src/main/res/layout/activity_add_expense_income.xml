@@ -78,6 +78,90 @@
 
     </LinearLayout>
 
+    <LinearLayout
+        android:id="@+id/salaryLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_gravity="center"
+        android:visibility="gone">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="80dp"
+            android:textSize="25dp"
+            android:textColor="@color/black"
+            android:text="Salary calculator"/>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="5dp">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Number of Hours:"
+            android:textSize="20sp" />
+
+        <EditText
+            android:id="@+id/Add_et_NumberOfHours"
+            android:layout_width="150dp"
+            android:layout_height="30dp"
+            android:background="@color/white"
+            android:hint="Number of Hours"
+            android:inputType="number"
+            android:maxLength="10"
+            android:maxLines="1" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginLeft="25dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Money per Hour:"
+            android:textSize="20sp" />
+
+        <EditText
+            android:id="@+id/Add_et_MoneyPerHour"
+            android:layout_width="150dp"
+            android:layout_height="30dp"
+            android:background="@color/white"
+            android:hint="Money per Hour"
+            android:inputType="numberDecimal"
+            android:maxLength="10"
+            android:maxLines="1" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+        <Button
+            android:id="@+id/Add_btn_Done"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:background="@color/white"
+            android:text="Done"
+            android:layout_gravity="center"
+            android:layout_marginBottom="25dp" />
+
+    </LinearLayout>
+
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -177,6 +261,8 @@
             android:hint=" Note" />
 
     </LinearLayout>
+
+
 
     <Button
         android:id="@+id/Add_btn_Submit"

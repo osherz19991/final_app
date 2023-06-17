@@ -14,6 +14,8 @@ public class Transaction {
     private int color;
     private Type type;
 
+    private String id;
+
 
     public Transaction(String transactionName, float amount, String date, String category, String note, int color, Type type) {
         this.transactionName = transactionName;
@@ -23,6 +25,7 @@ public class Transaction {
         this.note = note;
         this.color = color;
         this.type = type;
+        this.id = "0";
     }
 
     public Transaction() {
@@ -86,6 +89,8 @@ public class Transaction {
                 ", category='" + category + '\'' +
                 ", note='" + note + '\'' +
                 ", color=" + color +
+                ", type=" + type +
+                ", id='" + id + '\'' +
                 '}';
     }
 
@@ -96,5 +101,13 @@ public class Transaction {
 
     public void setType(Type type) {
         this.type = type;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 }

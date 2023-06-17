@@ -4,6 +4,8 @@ import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -21,12 +23,14 @@ public class TransactionAdapter extends RecyclerView.Adapter<TransactionAdapter.
     private List<Transaction> filteredList;
     private TransactionAdapterListener  listener;
 
-    public TransactionAdapter(List<Transaction> transactionList, boolean showIncomeList) {
+
+    public TransactionAdapter(List<Transaction> transactionList, boolean showIncomeList, TransactionAdapterListener listener) {
         this.transactionList = new ArrayList<>(transactionList);
         this.filteredList = new ArrayList<>(transactionList);
         if (!showIncomeList) {
             filterExpanseList(transactionList);
         }
+        this.listener = listener;
     }
 
     private void filterExpanseList(List<Transaction> transactionList) {
@@ -62,11 +66,6 @@ public class TransactionAdapter extends RecyclerView.Adapter<TransactionAdapter.
     }
 
 
-    public interface TransactionAdapterListener {
-        void onTransactionSelected(Transaction transaction);
-
-    }
-
     @NonNull
     @Override
     public TransactionViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -76,15 +75,36 @@ public class TransactionAdapter extends RecyclerView.Adapter<TransactionAdapter.
 
     @Override
     public void onBindViewHolder(@NonNull TransactionViewHolder holder, int position) {
-        Transaction transaction = filteredList.get(position);
+        Transaction transaction = filteredList.get(holder.getAdapterPosition());
 
-        holder.tvTransactionName.setText(transaction.getTransactionName());
-        holder.tvTransactionAmount.setText(String.valueOf(transaction.getAmount()));
-        holder.tvTransactionDate.setText(transaction.getDate());
-        holder.tvTransactionCategory.setText(transaction.getCategory());
-        holder.tvTransactionNote.setText(transaction.getNote());
+        holder.tvTransactionName.setText(" Name:"+transaction.getTransactionName());
+        holder.tvTransactionAmount.setText(" Amount:"+ String.valueOf(transaction.getAmount()));
+        holder.tvTransactionDate.setText(" Date:"+transaction.getDate());
+        holder.tvTransactionCategory.setText(" Category:"+transaction.getCategory());
 
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (listener != null) {
+                    listener.onTransactionSelected(transaction);
+                }
+            }
+        });
+
+        holder.deleteButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (listener != null) {
+                    int adapterPosition = holder.getAdapterPosition();
+                    if (adapterPosition != RecyclerView.NO_POSITION) {
+                        listener.onTransactionDeleteClicked(adapterPosition);
+                    }
+                }
+            }
+        });
+        holder.deleteButton.setTag(position);
     }
+
 
     @Override
     public int getItemCount() {
@@ -93,11 +113,11 @@ public class TransactionAdapter extends RecyclerView.Adapter<TransactionAdapter.
 
 
     public class TransactionViewHolder extends RecyclerView.ViewHolder {
-        TextView tvTransactionName;
-        TextView tvTransactionAmount;
-        TextView tvTransactionDate;
-        TextView tvTransactionCategory;
-        TextView tvTransactionNote;
+        private TextView tvTransactionName;
+        private TextView tvTransactionAmount;
+        private TextView tvTransactionDate;
+        private TextView tvTransactionCategory;
+        private Button deleteButton;
 
         public TransactionViewHolder(View itemView) {
             super(itemView);
@@ -105,12 +125,26 @@ public class TransactionAdapter extends RecyclerView.Adapter<TransactionAdapter.
             tvTransactionAmount = itemView.findViewById(R.id.tvTransactionAmount);
             tvTransactionDate = itemView.findViewById(R.id.tvTransactionDate);
             tvTransactionCategory = itemView.findViewById(R.id.tvTransactionCategory);
-            tvTransactionNote = itemView.findViewById(R.id.tvTransactionNote);
+            deleteButton = itemView.findViewById(R.id.btnDelete);
+
+            deleteButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    int position = getAdapterPosition();
+                    if (position != RecyclerView.NO_POSITION && listener != null) {
+                        listener.onTransactionDeleteClicked(position);
+                    }
+                }
+            });
         }
+
     }
 
-    public interface OnItemClickListener {
-        void onItemClick(Transaction transaction);
+    public interface TransactionAdapterListener {
+        void onTransactionSelected(Transaction transaction);
+
+        void onTransactionDeleteClicked(int position);
+
     }
 
 

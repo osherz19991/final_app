@@ -92,7 +92,7 @@ public class MainActivity extends AppCompatActivity {
         float totalIncome = calculateTotalAmount(incomesList);
         float totalExpense = calculateTotalAmount(expansesList);
 
-        Main_tv_financeStatus.setText(String.format("%.2f", (totalIncome - totalExpense)));
+        Main_tv_financeStatus.setText("Balance:\n" + String.format("%.2f", (totalIncome - totalExpense)));
 
         if (totalIncome - totalExpense < 0) {
             Main_tv_financeStatus.setTextColor(Color.RED);
@@ -184,7 +184,7 @@ public class MainActivity extends AppCompatActivity {
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
                     if (snapshot.exists()) {
                         String username = snapshot.getValue(String.class);
-                        Main_tv_name.setText(username);
+                        Main_tv_name.setText("Username:" + username);
                     }
                 }
 

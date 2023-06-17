@@ -15,7 +15,7 @@
         android:layout_height="40dp"
         android:orientation="horizontal"
         android:layout_marginTop="50dp"
-        android:layout_marginStart = "100dp"
+        android:layout_marginStart="116dp"
         android:layout_gravity="center"
         android:layout_marginBottom="20dp"
         android:background="@color/white">
@@ -33,7 +33,6 @@
             android:text="  expanse"
             android:textColor="@android:color/black"
             android:textSize="18sp" />
-
 
         <TextView
             android:id="@+id/List_tve_income"
@@ -61,14 +60,15 @@
         <EditText
             android:id="@+id/search_bar"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="50dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
             android:layout_marginBottom="8dp"
-            android:hint="Search"
+            android:hint=" Search according to transaction name"
             android:imeOptions="actionSearch"
-            android:inputType="text" />
+            android:inputType="text"
+            android:background="@drawable/layout_border"/>
 
     </LinearLayout>
 
