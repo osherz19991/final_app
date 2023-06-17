@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".Add_expense_income_Activity"
+    android:background="@color/purple_200"
+    android:layoutDirection="ltr">
+
+    <LinearLayout
+        android:id="@+id/Add_LLT_income_expanse"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:orientation="horizontal"
+        android:layout_marginTop="50dp"
+        android:layout_gravity="center"
+        android:background="@color/white">
+
+        <TextView
+            android:id="@+id/Add_tve_expanse"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/teal_200"
+            android:clickable="true"
+            android:focusable="true"
+            android:padding="8dp"
+            android:gravity="center|start"
+            android:text="expanse"
+            android:textColor="@android:color/black"
+            android:textSize="18sp" />
+
+
+        <TextView
+            android:id="@+id/Add_tve_income"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/white"
+            android:clickable="true"
+            android:focusable="true"
+            android:padding="8dp"
+            android:gravity="center|start"
+            android:text="income"
+            android:textColor="@android:color/black"
+            android:textSize="18sp" />
+
+    </LinearLayout>
+
+
+
+
+    <LinearLayout
+        android:layout_marginTop="16dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginBottom="16dp"
+        >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Transaction Name:"
+            android:textSize="16sp"
+            android:layout_marginStart="5dp"/>
+
+        <EditText
+            android:id="@+id/Add_et_TransactionName"
+            android:maxLength="20"
+            android:layout_width="250dp"
+            android:layout_height="30dp"
+            android:background="@color/white"
+            android:maxLines="1"
+            android:inputType="text"
+            android:hint=" Transaction Name" />
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginStart="5dp"
+        android:layout_marginBottom="16dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Amount:"
+            android:textSize="16sp" />
+
+        <EditText
+            android:id="@+id/Add_et_Amount"
+            android:layout_width="150dp"
+            android:layout_height="30dp"
+            android:background="@color/white"
+            android:hint=" Amount"
+            android:inputType="number"
+            android:maxLength="10"
+            android:maxLines="1" />
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginStart="5dp"
+        android:layout_marginBottom="16dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Date:"
+            android:textSize="16sp" />
+
+        <EditText
+            android:id="@+id/Add_et_Date"
+            android:layout_width="150dp"
+            android:layout_height="30dp"
+            android:background="@color/white"
+            android:clickable="true"
+            android:focusable="false"
+            android:hint="Date"
+            android:inputType="none"
+            android:textColor="@android:color/black"
+            android:textSize="16sp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginStart="5dp"
+        android:layout_marginBottom="16dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:text="Category:"
+            android:textSize="16sp" />
+
+    <Spinner
+        android:id="@+id/Add_sp_Category"
+        android:layout_width="250dp"
+        android:layout_height="30dp"
+        android:background="@color/white"
+        android:hint="Category" />
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginBottom="16dp"
+        android:layout_marginStart="5dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Note:"
+            android:textSize="16sp" />
+
+        <EditText
+            android:id="@+id/Add_et_Note"
+            android:layout_width="350dp"
+            android:layout_height="30dp"
+            android:maxLength="500"
+            android:background="@color/white"
+            android:hint=" Note" />
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/Add_btn_Submit"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_gravity="center_horizontal"
+        android:background="@color/white"
+        android:text="Submit" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/bottom_navigation"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:layout_alignParentBottom="true"
+            app:menu="@menu/bottom_menu" />
+
+    </RelativeLayout>
+
+
+</LinearLayout>

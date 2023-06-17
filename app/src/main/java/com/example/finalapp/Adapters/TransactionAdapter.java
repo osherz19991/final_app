@@ -1,0 +1,117 @@
+package com.example.finalapp.Adapters;
+
+import android.text.TextUtils;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.finalapp.Models.Transaction;
+import com.example.finalapp.R;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class TransactionAdapter extends RecyclerView.Adapter<TransactionAdapter.TransactionViewHolder> {
+
+    private List<Transaction> transactionList;
+    private List<Transaction> filteredList;
+    private TransactionAdapterListener  listener;
+
+    public TransactionAdapter(List<Transaction> transactionList, boolean showIncomeList) {
+        this.transactionList = new ArrayList<>(transactionList);
+        this.filteredList = new ArrayList<>(transactionList);
+        if (!showIncomeList) {
+            filterExpanseList(transactionList);
+        }
+    }
+
+    private void filterExpanseList(List<Transaction> transactionList) {
+        List<Transaction> expanses = transactionList;
+        transactionList.retainAll(expanses);
+        filteredList.retainAll(expanses);
+    }
+
+    public void filter(String searchText) {
+        filterList(searchText);
+    }
+
+    private void filterList(String searchText) {
+        filteredList.clear();
+        if (TextUtils.isEmpty(searchText)) {
+            filteredList.addAll(transactionList);
+        } else {
+            String searchLowerCase = searchText.toLowerCase();
+            for (Transaction transaction : transactionList) {
+                String transactionName = transaction.getTransactionName().toLowerCase();
+                if (transactionName.contains(searchLowerCase)) {
+                    filteredList.add(transaction);
+                }
+            }
+        }
+        notifyDataSetChanged();
+    }
+
+    public void showAllItems(List<Transaction> transactions) {
+        transactionList.clear();
+        transactionList.addAll(transactions);
+        filterList("");
+    }
+
+
+    public interface TransactionAdapterListener {
+        void onTransactionSelected(Transaction transaction);
+
+    }
+
+    @NonNull
+    @Override
+    public TransactionViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_transaction, parent, false);
+        return new TransactionViewHolder(itemView);
+    }
+
+    @Override
+    public void onBindViewHolder(@NonNull TransactionViewHolder holder, int position) {
+        Transaction transaction = filteredList.get(position);
+
+        holder.tvTransactionName.setText(transaction.getTransactionName());
+        holder.tvTransactionAmount.setText(String.valueOf(transaction.getAmount()));
+        holder.tvTransactionDate.setText(transaction.getDate());
+        holder.tvTransactionCategory.setText(transaction.getCategory());
+        holder.tvTransactionNote.setText(transaction.getNote());
+
+    }
+
+    @Override
+    public int getItemCount() {
+        return filteredList.size();
+    }
+
+
+    public class TransactionViewHolder extends RecyclerView.ViewHolder {
+        TextView tvTransactionName;
+        TextView tvTransactionAmount;
+        TextView tvTransactionDate;
+        TextView tvTransactionCategory;
+        TextView tvTransactionNote;
+
+        public TransactionViewHolder(View itemView) {
+            super(itemView);
+            tvTransactionName = itemView.findViewById(R.id.tvTransactionName);
+            tvTransactionAmount = itemView.findViewById(R.id.tvTransactionAmount);
+            tvTransactionDate = itemView.findViewById(R.id.tvTransactionDate);
+            tvTransactionCategory = itemView.findViewById(R.id.tvTransactionCategory);
+            tvTransactionNote = itemView.findViewById(R.id.tvTransactionNote);
+        }
+    }
+
+    public interface OnItemClickListener {
+        void onItemClick(Transaction transaction);
+    }
+
+
+}
