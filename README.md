@@ -1,6 +1,7 @@
 # Expense Tracker - BudgetSense
 
-![logo-removebg-preview](https://github.com/osherz19991/final_app/assets/100718762/3bc89932-84d5-463e-bd92-f1e181752e18)
+![logo-removebg-preview](https://github.com/osherz19991/final_app/assets/100718762/156b5699-7eff-4123-acdd-fff8c8c2c148)
+
 
 Final project Course 11345, Introduction to Cellular Sciences
 
@@ -28,19 +29,20 @@ Final project Course 11345, Introduction to Cellular Sciences
 
 ## Add tranaction window
 
-![expanse add](https://github.com/osherz19991/final_app/assets/100718762/e77e4ddc-5a69-4e54-9b56-2b354d1ce600)      ![income add](https://github.com/osherz19991/final_app/assets/100718762/f5430a77-2f3f-48ed-905c-17db70e5d91a)
+![expanse add](https://github.com/osherz19991/final_app/assets/100718762/97fb0db2-d82d-4c0f-bb79-e4b3e79ada9e)   ![income add](https://github.com/osherz19991/final_app/assets/100718762/4078e26a-84bf-4adf-8dfa-0d3b24808d66)
+
 
 - When adding income, you have the option to specify the number of hours worked and the hourly rate. The system will automatically calculate the amount by multiplying the hours and the rate, and add it to amount
 
   
 ## List of tranactions window
 
-![list of transactions](https://github.com/osherz19991/final_app/assets/100718762/eeb6fdde-ead3-4107-931b-4714c9710727)
+![list of transactions](https://github.com/osherz19991/final_app/assets/100718762/0070314e-86b2-4e43-b136-540189bfd9ab)
 
 
 ## Main window
 
-![Main](https://github.com/osherz19991/final_app/assets/100718762/5f100481-46ee-4b36-966b-972726f0b474)
+![Main](https://github.com/osherz19991/final_app/assets/100718762/27863e60-9c5a-46db-b91e-beaa0c6b2b6b)
 
 The current balance is represented by color indicators:
 
@@ -52,12 +54,12 @@ The current balance is represented by color indicators:
 
 ## Distribution Graph window
 
-![Graph](https://github.com/osherz19991/final_app/assets/100718762/449711ef-4883-481f-a41a-2880a7a052b6)
+![Graph](https://github.com/osherz19991/final_app/assets/100718762/ddb190a7-6203-478c-9c65-02cb412b1fc2)
 
 
 ## Categories window
 
-![category](https://github.com/osherz19991/final_app/assets/100718762/dfc30f6e-ca6e-4923-95c0-452874245858)
+![category](https://github.com/osherz19991/final_app/assets/100718762/781181d5-ae6e-4934-9731-09cd67a29eed)
 
 
 
