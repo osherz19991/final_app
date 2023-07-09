@@ -28,7 +28,7 @@ Final project Course 11345, Introduction to Cellular Sciences
 
 ## Login/Register window
 
-![login page](https://github.com/osherz19991/final_app/assets/100718762/2bad95ea-1cf8-484c-b384-d7f73a0fb1a5)   ![REGISTER](https://github.com/osherz19991/final_app/assets/100718762/f10861d7-dc56-4b1c-8e33-685c01fde812)
+![login page](https://github.com/osherz19991/final_app/assets/100718762/96875711-6bf2-4537-aed6-0ef1811bfaaa)   ![REGISTER](https://github.com/osherz19991/final_app/assets/100718762/f10861d7-dc56-4b1c-8e33-685c01fde812)
 
 - Login screen
 - Create an account screen
