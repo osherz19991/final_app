@@ -30,7 +30,9 @@ Final project Course 11345, Introduction to Cellular Sciences
 
 ![expanse add](https://github.com/osherz19991/final_app/assets/100718762/e77e4ddc-5a69-4e54-9b56-2b354d1ce600)      ![income add](https://github.com/osherz19991/final_app/assets/100718762/f5430a77-2f3f-48ed-905c-17db70e5d91a)
 
+- When adding income, you have the option to specify the number of hours worked and the hourly rate. The system will automatically calculate the amount by multiplying the hours and the rate, and add it to amount
 
+  
 ## List of tranactions window
 
 ![list of transactions](https://github.com/osherz19991/final_app/assets/100718762/eeb6fdde-ead3-4107-931b-4714c9710727)
