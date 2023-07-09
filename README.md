@@ -1,4 +1,4 @@
-# Expense Tracker
+# Expense Tracker - BudgetSense
 
 ![logo-removebg-preview](https://github.com/osherz19991/final_app/assets/100718762/3bc89932-84d5-463e-bd92-f1e181752e18)
 
